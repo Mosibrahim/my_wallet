@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:my_wallet/model/user.dart';
 import 'package:my_wallet/util/constants.dart';
@@ -12,25 +13,36 @@ class UserCardScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 10.0),
       child: Container(
-        height: getHeight(context)*.3,
-        width: getWidth(context)*.35,
+        height: getHeight(context) * .3,
+        width: getWidth(context) * .35,
         child: Stack(
           children: [
             Card(
               elevation: 10,
               child: Container(
-                height: getHeight(context)*.3,
+                height: getHeight(context) * .3,
+                color: Colors.white,
                 child: Column(
                   children: [
                     Container(
+                      color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()),
                       width: getWidth(context) * 0.5,
                       height: getHeight(context) * 0.1,
-                      color: Colors.yellow,
-                      child:Column(children: [
-                        SizedBox(height: 20,),
-                        Text("${user.username}",style: TextStyle(color: Colors.white),),
-                        Text("total spending",style: TextStyle(color: Colors.white),),
-                      ],),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "${user.username}",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          Text(
+                            "total spending",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
@@ -41,17 +53,20 @@ class UserCardScreen extends StatelessWidget {
                             quarterTurns: 3,
                             child: Text("EGP"),
                           ),
-                          Text("${user.amount.toStringAsFixed(2)}",style: TextStyle(fontSize: 20),),
+                          Text(
+                            "${user.amount.toStringAsFixed(2)}",
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ],
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.only(top: 20.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Last Spend on${user.lastTransactionDate.day}/${user.lastTransactionDate.month}"),
+                          Text(
+                              "Last Spend on${user.lastTransactionDate.day}/${user.lastTransactionDate.month}"),
                         ],
                       ),
                     )
@@ -61,7 +76,7 @@ class UserCardScreen extends StatelessWidget {
             ),
             Positioned(
                 top: -30,
-                left: getWidth(context)*.12,
+                left: getWidth(context) * .12,
                 child: Center(
                   child: CircleAvatar(
                       minRadius: 30,

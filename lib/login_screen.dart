@@ -29,17 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(padding: EdgeInsets.only(top: 300)),
-                  Card(
-                    child: Stack(
-                      children: [
-                        Container(
-                          color:
-                              Color((Random().nextDouble() * 0xFFFFFF).toInt()),
-                        ),
-                        Container(),
-                      ],
-                    ),
-                  ),
                   Padding(
                     padding:
                         const EdgeInsets.only(left: 20, bottom: 10, right: 20),

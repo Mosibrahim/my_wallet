@@ -12,6 +12,7 @@ import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   sqfliteFfiInit();
   _setTargetPlatformForDesktop();
   DatabaseUtils.createUserTable();

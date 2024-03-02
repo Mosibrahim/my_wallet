@@ -13,7 +13,9 @@ class MyHomePage extends StatelessWidget {
     String gratingMessage =
         DateTime.now().hour >= 12 ? "Good Evening" : "Good Morning";
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.orange.shade200,
+      ),
       body: CustomPaint(
         painter: BluePainter(),
         child: Container(
@@ -56,15 +58,23 @@ class MyHomePage extends StatelessWidget {
                   Card(
                     child: Container(
                       height: getWidth(context) * .35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Column(
                         children: [
                           Container(
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10)),
+                            ),
                             width: getWidth(context) * 0.4,
                             height: getHeight(context) * 0.06,
-                            color: Colors.black,
                             child: Center(
                                 child: Text(
-                              "Wallet",
+                              "Your Wallet",
                               style:
                                   TextStyle(color: Colors.white, fontSize: 25),
                             )),
@@ -99,13 +109,21 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Card(
                     child: Container(
-                      height: getHeight(context) * .35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      height: getHeight(context) * .25,
                       child: Column(
                         children: [
                           Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(10),
+                                  topRight: Radius.circular(10)),
+                            ),
                             width: getWidth(context) * 0.4,
                             height: getHeight(context) * 0.06,
-                            color: Colors.grey,
                             child: Center(
                                 child: Text(
                               "Last Transaction",
@@ -198,25 +216,18 @@ class BluePainter extends CustomPainter {
     canvas.drawPath(mainBackground, paint);
 
     Path ovalPath = Path();
-    // Start paint from 20% height to the left
-    ovalPath.moveTo(width, height * 0.55);
-
-    // paint a curve from current position to middle of the screen
-    ovalPath.relativeQuadraticBezierTo(
-        width, height * 0.60, width * 0.70, height * 0.40);
-    ovalPath.relativeQuadraticBezierTo(
-        width * 0.70, height * 0.38, width * 0.60, height * 0.25);
-    ovalPath.relativeQuadraticBezierTo(
-        width * 0.70, height * 0.40, width * 0.45, height * 0.30);
-    ovalPath.relativeQuadraticBezierTo(
-        0, height * 0.60, width * 0.40, height * 0.20);
-
-    // draw remaining line to bottom left side
-    ovalPath.lineTo(0, height * 0.20);
-
-    // Close line to reset it back
+    ovalPath.moveTo(width, 0);
+    ovalPath.quadraticBezierTo(width, height * 0.50, width, height * 0.60);
+    ovalPath.quadraticBezierTo(
+        width * .9, height * 0.70, width * 0.80, height * 0.55);
+    ovalPath.quadraticBezierTo(
+        width * .60, height * 0.2, width * 0.50, height * 0.20);
+    ovalPath.quadraticBezierTo(
+        width * .43, height * 0.20, width * 0.40, height * 0.250);
+    ovalPath.quadraticBezierTo(width * .15, height * 0.60, 0, height * 0.20);
+    ovalPath.quadraticBezierTo(0, height * 0.20, 0, 0);
+    ovalPath.lineTo(0, 0);
     ovalPath.close();
-
     paint.color = Colors.orange.shade200;
     canvas.drawPath(ovalPath, paint);
   }
