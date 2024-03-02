@@ -87,7 +87,7 @@ class MyHomePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               RotatedBox(
-                                quarterTurns: 1,
+                                quarterTurns: 3,
                                 child: Text("EGP"),
                               ),
                               Text(
@@ -139,7 +139,7 @@ class MyHomePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               RotatedBox(
-                                quarterTurns: 1,
+                                quarterTurns: 3,
                                 child: Text("EGP"),
                               ),
                               Text(
